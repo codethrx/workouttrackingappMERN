@@ -13,8 +13,8 @@ app.use((req, res, next) => {
   console.log(`Method--${req.method}`);
   next();
 });
-
-//
+//API Calls-Routes
+app.use("/api/workouts", require("./routes/workout/workoutRoute"));
 //Listening to requests.
 app.listen(PORT, () => {
   console.log(`Listening to port#${PORT}`);
