@@ -1,8 +1,8 @@
 //IMPORTS
 require("dotenv").config();
 const express = require("express");
-const mongoose = require("mongoose");
 const PORT = process.env.PORT || 5000;
+const connectDB = require("./db/database");
 //express app
 const app = express();
 //middlewares
@@ -15,7 +15,5 @@ app.use((req, res, next) => {
 });
 //API Calls-Routes
 app.use("/api/workouts", require("./routes/workout/workoutRoute"));
-//Listening to requests.
-app.listen(PORT, () => {
-  console.log(`Listening to port#${PORT}`);
-});
+
+connectDB(app, PORT);
