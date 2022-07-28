@@ -10,5 +10,9 @@ const {
 } = require("../../controllers/workout/workoutController");
 //creating routes
 router.route("/").get(getWorkouts).post(addWorkout);
-router.route("/:id").get(getWorkout).patch(updateWorkout).delete(deleteWorkout);
+router
+  .route("/:workoutID")
+  .get(getWorkout)
+  .patch(updateWorkout)
+  .delete(deleteWorkout);
 module.exports = router;
