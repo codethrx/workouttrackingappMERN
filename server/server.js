@@ -9,7 +9,7 @@ const app = express();
 //middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cors({ origin: "*" }));
+app.use(cors());
 // app.use(cors());
 app.use((req, res, next) => {
   console.log(`Pathname--${req.path}`);
@@ -18,5 +18,6 @@ app.use((req, res, next) => {
 });
 //API Calls-Routes
 app.use("/api/workouts", require("./routes/workout/workoutRoute"));
+app.use("/api/auth", require("./routes/authentication/authRoute"));
 
 connectDB(app, PORT);

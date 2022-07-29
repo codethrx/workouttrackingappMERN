@@ -26,6 +26,9 @@ const getWorkout = async (req, res) => {
 };
 const addWorkout = async (req, res) => {
   const { title, weight, reps } = req.body;
+  if (!title || !weight || !reps) {
+    return res.status(400).json({ error: "Entries are not filled" });
+  }
   try {
     const newWorkout = await Workout.create({ ...req.body });
     res.status(201).json(newWorkout);
